@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block divform %}
+<form action="/op1" method="post">
+  {% csrf_token %}
+  {{ form.as_ul }}
+  <input type="submit" value="Invia">
+{% endblock %}
+
+{% block divquery %}
+<table class="table">
+  <thead>
+    <tr>
+    {% for colname in tableh %}
+      <th scope="col">{{ colname }}</th>
+    {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in table %}
+    <tr>
+      {% for tuple in row %}
+      <td>
+         {{ tuple }}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
